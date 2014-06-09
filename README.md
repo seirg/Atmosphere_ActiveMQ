@@ -4,6 +4,7 @@ He adaptado el ejemplo de un chat que existía de en Atmosphere usando REST y Je
 Todos los mensajes que se envían (a través del servidor) vía la cola ActiveMQ les llegan a los que están conectados al chat (además de los mensajes entre ellos).
 
 Habría que realizar los siguientes pasos para mostrarlo en una demo:
+
 0.- Generar .war y desplegarlo en un servidor de aplicaciones (yo he usado un Tomcat 7)
 
 1.- Conectar varios clientes web (un par de ellos)
