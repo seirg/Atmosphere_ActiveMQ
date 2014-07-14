@@ -1,4 +1,4 @@
-package org.atmosphere.samples.chat.jersey;
+package org.research.smartcityeco.samples.map.atmosphere;
 
 /**
  *

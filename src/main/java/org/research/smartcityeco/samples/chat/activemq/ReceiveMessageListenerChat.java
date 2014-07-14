@@ -1,4 +1,4 @@
-package org.atmosphere.samples.chat.activemq;
+package org.research.smartcityeco.samples.chat.activemq;
 
 import java.io.IOException;
 
@@ -19,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebServlet(name = "ReceiveMessageListener", urlPatterns = "/receiveMessageListener")
-public class ReceiveMessageListener extends HttpServlet {
-	private static final Logger logger = LoggerFactory.getLogger(ReceiveMessageListener.class);
+@WebServlet(name = "ReceiveMessageListenerChat", urlPatterns = "/receiveMessageListenerChat")
+public class ReceiveMessageListenerChat extends HttpServlet {
+	private static final Logger logger = LoggerFactory.getLogger(ReceiveMessageListenerChat.class);
 
 	@Override
 	protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
@@ -56,7 +56,7 @@ public class ReceiveMessageListener extends HttpServlet {
 			
 			// Create a consumer with listener
 			MessageConsumer consumer = queueSession.createConsumer(queue);
-			MessageListener listener = new MyListener();
+			MessageListener listener = new MyListenerChat();
 			consumer.setMessageListener(listener);			
 
 			queueConnection.start();			

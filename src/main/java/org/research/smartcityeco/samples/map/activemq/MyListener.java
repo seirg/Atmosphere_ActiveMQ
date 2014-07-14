@@ -1,19 +1,21 @@
-package org.atmosphere.samples.chat.activemq;
+package org.research.smartcityeco.samples.map.activemq;
 
 import java.io.IOException;
 import java.util.logging.Level;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+
 import org.atmosphere.cpr.BroadcasterFactory;
-import org.atmosphere.samples.chat.jersey.GeoMessage;
-import org.atmosphere.samples.chat.jersey.RTAction;
-import org.atmosphere.samples.chat.jersey.Response;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
 import org.geojson.Point;
+import org.research.smartcityeco.samples.map.atmosphere.GeoMessage;
+import org.research.smartcityeco.samples.map.atmosphere.RTAction;
+import org.research.smartcityeco.samples.map.atmosphere.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -13,9 +13,8 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.atmosphere.samples.chat.wasync;
+package org.research.smartcityeco.wasync;
 
-import org.atmosphere.samples.chat.jersey.Response;
 import org.atmosphere.wasync.ClientFactory;
 import org.atmosphere.wasync.Function;
 import org.atmosphere.wasync.Request;
@@ -23,6 +22,7 @@ import org.atmosphere.wasync.RequestBuilder;
 import org.atmosphere.wasync.Socket;
 import org.atmosphere.wasync.impl.AtmosphereClient;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.research.smartcityeco.samples.map.atmosphere.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.atmosphere.samples.chat.jersey.serialization;
+package org.research.smartcityeco.samples.map.serialization;
 
 import java.io.IOException;
 import org.codehaus.jackson.JsonParser;

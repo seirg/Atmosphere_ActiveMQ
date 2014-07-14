@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.atmosphere.samples.chat.jersey;
+package org.research.smartcityeco.samples.map.atmosphere;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
  */
 @Path("/")
 @AtmosphereService (broadcaster = JerseyBroadcaster.class)
-public class ChatResource {
+public class MapResource {
 
     static int maxId = 0;
 
@@ -91,7 +91,7 @@ public class ChatResource {
     }
 
     public static final class OnDisconnect extends AtmosphereResourceEventListenerAdapter {
-        private final Logger logger = LoggerFactory.getLogger(ChatResource.class);
+        private final Logger logger = LoggerFactory.getLogger(MapResource.class);
 
         /**
          * {@inheritDoc}

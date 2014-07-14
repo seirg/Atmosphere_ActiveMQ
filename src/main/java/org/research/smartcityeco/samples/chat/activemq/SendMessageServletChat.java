@@ -1,4 +1,4 @@
-package org.atmosphere.samples.chat.activemq;
+package org.research.smartcityeco.samples.chat.activemq;
 
 import java.io.IOException;
 import java.util.Date;
@@ -19,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebServlet(name = "SendMessageServlet", urlPatterns = "/sendMessage")
-public class SendMessageServlet extends HttpServlet {
+@WebServlet(name = "SendMessageServletChat", urlPatterns = "/sendMessageChat")
+public class SendMessageServletChat extends HttpServlet {
 
-    private static final Logger logger = LoggerFactory.getLogger(SendMessageServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(SendMessageServletChat.class);
 
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {

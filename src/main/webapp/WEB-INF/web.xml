@@ -6,15 +6,19 @@
    metadata-complete="false"
    version="3.1">    
 
-    <description>Atmosphere REST Chat</description>
-    <display-name>Atmosphere REST Chat</display-name>
+    <description>Atmosphere REST ActiveMQ</description>
+    <display-name>Atmosphere REST ActiveMQ</display-name>
     <servlet>
         <description>AtmosphereServlet</description>
         <servlet-name>AtmosphereServlet</servlet-name>
         <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>org.atmosphere.samples.chat.jersey</param-value>
+            <param-value>
+                org.research.smartcityeco.samples.chat.atmosphere
+                org.research.smartcityeco.samples.map.atmosphere
+                org.research.smartcityeco.samples.rest.jersey
+            </param-value>
         </init-param>
         <init-param>
             <param-name>org.atmosphere.websocket.messageContentType</param-name>

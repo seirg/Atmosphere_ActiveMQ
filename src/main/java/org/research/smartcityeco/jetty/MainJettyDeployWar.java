@@ -1,4 +1,4 @@
-package org.atmosphere.samples.chat;
+package org.research.smartcityeco.jetty;
 
 import java.io.File;
 import java.net.URL;

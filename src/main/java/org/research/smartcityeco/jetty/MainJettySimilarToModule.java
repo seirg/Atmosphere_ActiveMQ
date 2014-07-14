@@ -1,4 +1,4 @@
-package org.atmosphere.samples.chat;
+package org.research.smartcityeco.jetty;
 
 import org.atmosphere.cpr.AtmosphereServlet;
 import org.eclipse.jetty.server.Server;

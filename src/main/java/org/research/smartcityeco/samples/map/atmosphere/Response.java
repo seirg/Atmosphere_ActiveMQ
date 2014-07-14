@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.atmosphere.samples.chat.jersey;
+package org.research.smartcityeco.samples.map.atmosphere;
 
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;

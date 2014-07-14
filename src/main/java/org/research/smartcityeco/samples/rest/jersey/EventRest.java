@@ -1,4 +1,4 @@
-package org.atmosphere.samples.chat.jersey;
+package org.research.smartcityeco.samples.rest.jersey;
 
 import java.util.Date;
 
@@ -8,8 +8,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-
-import org.atmosphere.samples.chat.jerseyvo.EventVO;
 
 @Path("/event")
 public class EventRest {

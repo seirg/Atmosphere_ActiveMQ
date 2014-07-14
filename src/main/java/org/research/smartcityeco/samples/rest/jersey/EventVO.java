@@ -1,4 +1,4 @@
-package org.atmosphere.samples.chat.jerseyvo;
+package org.research.smartcityeco.samples.rest.jersey;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
