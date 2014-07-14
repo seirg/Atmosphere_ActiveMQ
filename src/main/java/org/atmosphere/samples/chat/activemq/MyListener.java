@@ -5,6 +5,7 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.samples.chat.jersey.Response;
 import org.slf4j.Logger;
@@ -20,8 +21,10 @@ public class MyListener implements MessageListener {
 			TextMessage tm = (TextMessage) message;
 			try {
 				logger.info(String.format("Received TextMessage with text '%s'.", tm.getText()));
-				Response response = new Response("ActiveMQ", tm.getText());				
-				BroadcasterFactory.getDefault().lookup("/*").broadcast(response);
+				Response response = new Response("ActiveMQ", tm.getText());
+				//BroadcasterFactory.getDefault().lookup("/*").broadcast(response);
+				BroadcasterFactory.getDefault().lookup("betis").broadcast(response);				
+				
 			} catch (JMSException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

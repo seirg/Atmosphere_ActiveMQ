@@ -8,7 +8,7 @@ $(function () {
     var author = null;
     var logged = false;
     var socket = $.atmosphere;
-    var request = { url: 'http://localhost:8080/chat',
+    var request = { url: 'http://localhost:8888/atmosphere-activemq-chat/chat/betis',
                     contentType : "application/json",
                     logLevel : 'debug',
                     transport : 'websocket' ,
@@ -44,7 +44,7 @@ $(function () {
 
     request.onClose = function(response) {
         logged = false;
-    };
+    }
 
     request.onError = function(response) {
         content.html($('<p>', { text: 'Sorry, but there\'s some problem with your '
