@@ -15,22 +15,52 @@
  */
 package org.atmosphere.samples.chat.jersey;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
+import org.geojson.FeatureCollection;
 
 @XmlRootElement
 public class Response {
 
-    public String text;
-    public String author;
-    public long time;
+    private final String author;
 
-    public Response(String author, String text) {
+    private final RTAction action;
+
+    private final FeatureCollection featureCollection;
+    private final long time;
+
+    public Response(String author, RTAction action, FeatureCollection collection) {
         this.author = author;
-        this.text = text;
+        this.featureCollection = collection;
         this.time = new Date().getTime();
+        this.action = action;
     }
 
-    public Response() {
+    /**
+     * @return the author
+     */
+    public String getAuthor() {
+        return author;
+    }
+
+    /**
+     * @return the action
+     */
+    public RTAction getAction() {
+        return action;
+    }
+
+    /**
+     * @return the featureCollection
+     */
+    public FeatureCollection getFeatureCollection() {
+        return featureCollection;
+    }
+
+    /**
+     * @return the time
+     */
+    public long getTime() {
+        return time;
     }
 }

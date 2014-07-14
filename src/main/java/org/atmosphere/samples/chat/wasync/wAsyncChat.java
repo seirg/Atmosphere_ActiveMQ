@@ -17,9 +17,6 @@ package org.atmosphere.samples.chat.wasync;
 
 import org.atmosphere.samples.chat.jersey.Response;
 import org.atmosphere.wasync.ClientFactory;
-import org.atmosphere.wasync.Decoder;
-import org.atmosphere.wasync.Encoder;
-import org.atmosphere.wasync.Event;
 import org.atmosphere.wasync.Function;
 import org.atmosphere.wasync.Request;
 import org.atmosphere.wasync.RequestBuilder;
@@ -29,10 +26,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Date;
 
 public class wAsyncChat {
 
@@ -70,7 +64,7 @@ public class wAsyncChat {
 		socket.on("message", new Function<Response>() {
 			@Override
 			public void on(final Response s) {				
-				logger.info(s.text);
+                logger.info(s.getFeatureCollection().toString());
 			};
 		});
 
