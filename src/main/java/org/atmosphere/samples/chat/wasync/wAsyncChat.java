@@ -15,46 +15,58 @@
  */
 package org.atmosphere.samples.chat.wasync;
 
+import org.atmosphere.samples.chat.jersey.Response;
+import org.atmosphere.wasync.ClientFactory;
+import org.atmosphere.wasync.Function;
+import org.atmosphere.wasync.Request;
+import org.atmosphere.wasync.RequestBuilder;
+import org.atmosphere.wasync.Socket;
+import org.atmosphere.wasync.impl.AtmosphereClient;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class wAsyncChat {
 
-//	private final static Logger logger = LoggerFactory
-//			.getLogger(wAsyncChat.class);
-//	private final static ObjectMapper mapper = new ObjectMapper();
-//
-//	public static void main(String[] args) throws IOException {
-//
-//		if (args.length == 0) {
-//			args = new String[] { "http://127.0.0.1:8888" };
-//		}
-//
-//		AtmosphereClient client = ClientFactory.getDefault().newClient(
-//				AtmosphereClient.class);
-//		final RequestBuilder request = client.newRequestBuilder()
-//				.method(Request.METHOD.GET).uri("http://localhost:8888/atmosphere-activemq-chat/")
-//				.trackMessageLength(true)
-//				.transport(Request.TRANSPORT.WEBSOCKET)
-//				.transport(Request.TRANSPORT.LONG_POLLING);
-//
-//		/*
-//		 * code to create the socket at server side using the created client
-//		 */
-//		Socket socket = client.create();
-//
-//		/*
-//		 * code to open the socket
-//		 */
-//		socket.open(request.build());
-//
-//		/*
-//		 * code for Message handler
-//		 */
-//		socket.on("message", new Function<Response>() {
-//			@Override
-//			public void on(final Response s) {				
-//				logger.info(s.text);
-//			};
-//		});
+	private final static Logger logger = LoggerFactory
+			.getLogger(wAsyncChat.class);
+	private final static ObjectMapper mapper = new ObjectMapper();
+
+	public static void main(String[] args) throws IOException {
+
+		if (args.length == 0) {
+			args = new String[] { "http://127.0.0.1:8888" };
+		}
+
+		AtmosphereClient client = ClientFactory.getDefault().newClient(
+				AtmosphereClient.class);
+		final RequestBuilder request = client.newRequestBuilder()
+				.method(Request.METHOD.GET).uri("http://localhost:8888/atmosphere-activemq-chat/")
+				.trackMessageLength(true)
+				.transport(Request.TRANSPORT.WEBSOCKET)
+				.transport(Request.TRANSPORT.LONG_POLLING);
+
+		/*
+		 * code to create the socket at server side using the created client
+		 */
+		Socket socket = client.create();
+
+		/*
+		 * code to open the socket
+		 */
+		socket.open(request.build());
+
+		/*
+		 * code for Message handler
+		 */
+		socket.on("message", new Function<Response>() {
+			@Override
+			public void on(final Response s) {				
+                logger.info(s.getFeatureCollection().toString());
+			};
+		});
 
 //		AtmosphereClient client = ClientFactory.getDefault().newClient(
 //				AtmosphereClient.class);
@@ -135,6 +147,6 @@ public class wAsyncChat {
 //			socket.fire(new Message(name, a));
 //		}
 //		socket.close();
-//	}
+	}
 
 }

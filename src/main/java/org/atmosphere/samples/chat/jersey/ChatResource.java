@@ -15,19 +15,21 @@
  */
 package org.atmosphere.samples.chat.jersey;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import org.atmosphere.annotation.Broadcast;
 import org.atmosphere.annotation.Suspend;
 import org.atmosphere.config.service.AtmosphereService;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.cpr.AtmosphereResourceEventListenerAdapter;
 import org.atmosphere.jersey.JerseyBroadcaster;
+import org.geojson.Feature;
+import org.geojson.FeatureCollection;
+import org.geojson.Point;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 
 /**
  * Simple chat resource demonstrating the power of Atmosphere. This resource supports transport like WebSocket, Streaming, JSONP and Long-Polling.
@@ -37,6 +39,8 @@ import javax.ws.rs.Produces;
 @Path("/")
 @AtmosphereService (broadcaster = JerseyBroadcaster.class)
 public class ChatResource {
+
+    static int maxId = 0;
 
     /**
      * Suspend the response without writing anything back to the client.
@@ -52,14 +56,38 @@ public class ChatResource {
     /**
      * Broadcast the received message object to all suspended response. Do not write back the message to the calling connection.
      *
-     * @param message a {@link Message}
+     * @param message a {@link GeoMessage}
      * @return a {@link Response}
      */
     @Broadcast(writeEntity = false)
     @POST
     @Produces("application/json")
-    public Response broadcast(Message message) {
-        return new Response(message.author, message.message);
+    public Response broadcast(GeoMessage message) {
+
+        FeatureCollection collection = new FeatureCollection();
+
+        Feature feature = new Feature();
+        switch (message.getAction()) {
+            case ADD:
+                feature.setGeometry(new Point(message.getLongitude(), message.getLatitude()));
+                feature.setId((++maxId) + "");
+                feature.getProperties().put("id", maxId);
+                break;
+            case DELETE:
+                feature.setId(message.getFeatureId() + "");
+                break;
+            case MODIFY:
+                feature.setGeometry(new Point(message.getLongitude(), message.getLatitude()));
+                feature.setId(message.getFeatureId() + "");
+                feature.getProperties().put("id", maxId);
+                break;
+            default:
+                throw new IllegalArgumentException("Not supported RTAction value " + message.getAction().name());
+        }
+
+        collection.add(feature);
+        
+        return new Response(message.getAuthor(), message.getAction(), collection);
     }
 
     public static final class OnDisconnect extends AtmosphereResourceEventListenerAdapter {
