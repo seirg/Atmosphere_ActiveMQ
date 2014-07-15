@@ -9,7 +9,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
 public class MainJettyDeployWar {
 
 	public static void main(String[] args) throws Exception {
-		final Server server = new Server(8080);
+		final Server server = new Server(8888);
 		final WebAppContext webapp = new WebAppContext();
 		webapp.setContextPath("/");
 		final URL url = new File("target/atmosphere-activemq-chat.war").getAbsoluteFile().toURI().toURL();		

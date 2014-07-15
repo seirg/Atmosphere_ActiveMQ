@@ -11,7 +11,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 public class MainJettySimilarToModule {
 
 	public static void main(String[] args) throws Exception {
-		Server server = new Server(8080); 
+		Server server = new Server(8888); 
 		
         //static files handler        
         ResourceHandler resource_handler = new ResourceHandler();

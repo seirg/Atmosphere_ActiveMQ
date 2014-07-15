@@ -9,7 +9,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 public class MainJetty {
 
 	public static void main(String[] args) throws Exception {
-		Server server = new Server(8080);
+		Server server = new Server(8888);
     
 //    /*  <init-param>
 //            <param-name>com.sun.jersey.config.property.packages</param-name>
