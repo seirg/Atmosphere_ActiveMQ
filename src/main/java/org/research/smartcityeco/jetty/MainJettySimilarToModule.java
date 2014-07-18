@@ -25,14 +25,18 @@ public class MainJettySimilarToModule {
         //Atmosphere
 		AtmosphereServlet atmosphereServlet = new AtmosphereServlet();
         ServletHolder servletHolder = new ServletHolder(atmosphereServlet);
-        servletHolder.setInitParameter("com.sun.jersey.config.property.packages","org.atmosphere.samples.chat.jersey");
+        servletHolder.setInitParameter("com.sun.jersey.config.property.packages",
+        		"org.research.smartcityeco.samples.map.atmosphere "
+        		+ "org.research.smartcityeco.samples.chat.atmosphere "
+        		+ "org.research.smartcityeco.samples.rest.jersey");
+        
         servletHolder.setInitParameter("org.atmosphere.websocket.messageContentType", "application/json");
         servletHolder.setAsyncSupported(true);
         servletHolder.setInitParameter("org.atmosphere.useWebSocket","true");
         //servletHolder.setInitParameter("org.atmosphere.cpr.asyncSupport", "org.atmosphere.container.Jetty9AsyncSupportWithWebSocket");
         
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(servletHolder, "/chat/*");
+        context.addServlet(servletHolder, "/atmosphere/*");
         
         HandlerList handlers = new HandlerList();
         handlers.addHandler(context1);

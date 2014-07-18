@@ -34,9 +34,9 @@ import org.slf4j.LoggerFactory;
 /**
  * Simple chat resource demonstrating the power of Atmosphere. This resource supports transport like WebSocket, Streaming, JSONP and Long-Polling.
  *
- * @author Jeanfrancois Arcand
+ * @author SmartCity.eco
  */
-@Path("/")
+@Path("/map/")
 @AtmosphereService (broadcaster = JerseyBroadcaster.class)
 public class MapResource {
 

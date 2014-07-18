@@ -33,7 +33,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AtmosphereServlet</servlet-name>
-        <url-pattern>/chat/*</url-pattern>
+        <url-pattern>/atmosphere/*</url-pattern>
     </servlet-mapping>
 </web-app>
 

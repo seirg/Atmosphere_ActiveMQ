@@ -25,8 +25,12 @@ public class MainJetty {
         
         //Atmosphere
         AtmosphereServlet atmosphereServlet = new AtmosphereServlet();
-        ServletHolder servletHolder = new ServletHolder(atmosphereServlet);
-        servletHolder.setInitParameter("com.sun.jersey.config.property.packages","org.atmosphere.samples.chat.jersey");
+        ServletHolder servletHolder = new ServletHolder(atmosphereServlet);        
+        servletHolder.setInitParameter("com.sun.jersey.config.property.packages", 
+        		"org.research.smartcityeco.samples.map.atmosphere "
+        		+ "org.research.smartcityeco.samples.chat.atmosphere "
+        		+ "org.research.smartcityeco.samples.rest.jersey");
+        
         servletHolder.setInitParameter("org.atmosphere.websocket.messageContentType", "application/json");
         servletHolder.setAsyncSupported(true);
         servletHolder.setInitParameter("org.atmosphere.useWebSocket","true");
@@ -37,7 +41,7 @@ public class MainJetty {
         resourceHandler.setResourceBase("./src/main/webapp/");
         
         ServletContextHandler servletContextHandler = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
-        servletContextHandler.addServlet(servletHolder, "/chat/*");        
+        servletContextHandler.addServlet(servletHolder, "/atmosphere/*");        
         servletContextHandler.setHandler(resourceHandler);
                 
         server.start();

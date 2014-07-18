@@ -24,7 +24,7 @@ function initMap() {
         id: "realTimeLayer",
         type: "SMC.layers.markers.AtmosphereRTMarkerLayer",
         params: [{
-            url: "http://localhost:8888/atmosphere-activemq-chat/chat",
+            url: "http://localhost:8888/atmosphere-activemq-chat/atmosphere/map",
             topic: "realTimeMarkers",
             stylesheet: "* {popUpTemplate:\"<p><a href=\\\"javascript:deleteMarker({{$id}})\\\">Delete</a></p><p><a href=\\\"javascript:moveMarker({{$id}})\\\">Move</a></p>\";popUpOffsetTop:-30;}"
         }],

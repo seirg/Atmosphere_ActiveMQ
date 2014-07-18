@@ -5,6 +5,7 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.research.smartcityeco.samples.chat.atmosphere.ResponseChat;
 import org.slf4j.Logger;
@@ -22,7 +23,7 @@ public class MyListenerChat implements MessageListener {
 
             try {
 				logger.info(String.format("Received TextMessage with text '%s'.", tm.getText()));
-                ResponseChat response = new ResponseChat("Active MQ", tm.getText());				
+                ResponseChat response = new ResponseChat("Active MQ", tm.getText());                
 				BroadcasterFactory.getDefault().lookup("betis").broadcast(response);
 			} catch (JMSException e) {
 				// TODO Auto-generated catch block
