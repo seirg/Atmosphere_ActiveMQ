@@ -28,7 +28,7 @@ public class ReceiveMessageListener extends HttpServlet {
 			throws ServletException, IOException {
 		logger.info("receiveMessage3# doGet() called");
 		receiveMessages();
-		writeRepsonse(httpServletResponse, "Escuchando mensajitos");
+		writeRepsonse(httpServletResponse, "Listening messages");
 	}
 
 	private void writeRepsonse(HttpServletResponse httpServletResponse, String text) throws IOException {

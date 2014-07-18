@@ -56,13 +56,13 @@ public class MapResource {
     /**
      * Broadcast the received message object to all suspended response. Do not write back the message to the calling connection.
      *
-     * @param message a {@link GeoMessage}
-     * @return a {@link Response}
+     * @param message a {@link GeoPayload}
+     * @return a {@link GeoResponse}
      */
     @Broadcast(writeEntity = false)
     @POST
     @Produces("application/json")
-    public Response broadcast(GeoMessage message) {
+    public GeoResponse broadcast(GeoPayload message) {
 
         FeatureCollection collection = new FeatureCollection();
 
@@ -87,7 +87,7 @@ public class MapResource {
 
         collection.add(feature);
         
-        return new Response(message.getAuthor(), message.getAction(), collection);
+        return new GeoResponse(message.getAuthor(), message.getAction(), collection);
     }
 
     public static final class OnDisconnect extends AtmosphereResourceEventListenerAdapter {

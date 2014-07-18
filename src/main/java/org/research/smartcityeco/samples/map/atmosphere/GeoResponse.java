@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.geojson.FeatureCollection;
 
 @XmlRootElement
-public class Response {
+public class GeoResponse {
 
     private final String author;
 
@@ -29,7 +29,7 @@ public class Response {
     private final FeatureCollection featureCollection;
     private final long time;
 
-    public Response(String author, RTAction action, FeatureCollection collection) {
+    public GeoResponse(String author, RTAction action, FeatureCollection collection) {
         this.author = author;
         this.featureCollection = collection;
         this.time = new Date().getTime();

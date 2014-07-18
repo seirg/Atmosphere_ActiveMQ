@@ -7,14 +7,16 @@ import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
 import javax.jms.Session;
-import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.research.smartcityeco.samples.map.atmosphere.GeoPayload;
+import org.research.smartcityeco.samples.map.atmosphere.RTAction;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +29,9 @@ public class SendMessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
     	logger.info("doGet() called");
-    	String parameter = getTextParameter(httpServletRequest);
-        sendMessage(parameter);
-        writeResponse(httpServletResponse, parameter);
+        GeoPayload payload = buildGeoPayload(httpServletRequest);
+        sendMessage(payload);
+        writeResponse(httpServletResponse, payload.toString());
     }
 
 	private void writeResponse(HttpServletResponse httpServletResponse,
@@ -38,15 +40,16 @@ public class SendMessageServlet extends HttpServlet {
         httpServletResponse.getWriter().write(String.format("Sent message with content '%s'.", parameter));
 	}
 
-	private String getTextParameter(HttpServletRequest httpServletRequest) {
-		String parameter = httpServletRequest.getParameter("text");
-    	if(parameter==null || parameter.isEmpty()) {
-    		parameter = (new Date()).toString();
-    	}
-		return parameter;
+	private GeoPayload buildGeoPayload(HttpServletRequest httpServletRequest) {
+		GeoPayload payload = new GeoPayload();
+        payload.setAction(RTAction.valueOf(httpServletRequest.getParameter("action")));
+        payload.setAuthor(SendMessageServlet.class.getName());
+        payload.setLongitude(Double.parseDouble(httpServletRequest.getParameter("longitude")));
+        payload.setLatitude(Double.parseDouble(httpServletRequest.getParameter("latitude")));
+		return payload;
 	}
 
-    private void sendMessage(String text) {
+    private void sendMessage(GeoPayload payload) {
         try {
         	// Create a ConnectionFactory
             InitialContext initCtx = new InitialContext();
@@ -62,9 +65,7 @@ public class SendMessageServlet extends HttpServlet {
             MessageProducer producer = session.createProducer((Destination) initCtx.lookup("java:comp/env/jms/queue/MyQueue"));
 
             // Create a messages
-            TextMessage testMessage = session.createTextMessage();
-            testMessage.setText(text);
-            testMessage.setStringProperty("aKey", "someRandomTestValue");
+            ObjectMessage testMessage = session.createObjectMessage(payload);            
             
             // Tell the producer to send the message
             producer.send(testMessage);
