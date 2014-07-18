@@ -10,7 +10,7 @@ A continuación vamos a probar la recepción de mensajes a través de ActiveMQ:
 1º.- Hay que levantar la cola (en la prueba de concepto a través de un servlet): 
 http://localhost:8888/atmosphere-activemq-chat/receiveMessageListener
 2º.- Enviar un mensaje con la posicíon deseada:
-http://localhost:8888/atmosphere-activemq-chat/sendMessage
+http://localhost:8888/atmosphere-activemq-chat/sendMessage?action=ADD&latitude=37&langitude=-5
 
 **********************************
 Por otro lado también está disponible el ejemplo pero en lugar de con mapas y markers, partiendo del proyecto de un chat que tiene Atmosphere en GitHub.
@@ -35,6 +35,6 @@ http://localhost:8888/atmosphere-activemq-chat/indexMap.html
 http://localhost:8080/atmosphere-activemq-chat/receiveMessageListener
 
 3.- Enviar un mensaje a la cola ActiveMQ
-http://localhost:8080/atmosphere-activemq-chat/sendMessage
+http://localhost:8888/atmosphere-activemq-chat/sendMessage?action=ADD&latitude=37&langitude=-5
 
 4.- Comprobar que en los clientes web se reciben los localizadores enviados desde la cola
