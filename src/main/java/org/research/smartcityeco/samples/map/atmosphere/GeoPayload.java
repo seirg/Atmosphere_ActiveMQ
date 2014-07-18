@@ -15,11 +15,11 @@
  */
 package org.research.smartcityeco.samples.map.atmosphere;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.geojson.FeatureCollection;
 
 @XmlRootElement
-public class GeoMessage {
+public class GeoPayload implements Serializable {
 
     private String author;
     private RTAction action;
@@ -27,7 +27,7 @@ public class GeoMessage {
     private double latitude;
     private double longitude;
 
-    public GeoMessage() {
+    public GeoPayload() {
         
     }
 
@@ -101,4 +101,5 @@ public class GeoMessage {
         this.featureId = featureId;
     }
 
+   
 }

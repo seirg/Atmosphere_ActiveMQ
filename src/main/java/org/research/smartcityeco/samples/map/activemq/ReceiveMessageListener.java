@@ -28,7 +28,7 @@ public class ReceiveMessageListener extends HttpServlet {
 			throws ServletException, IOException {
 		logger.info("receiveMessage3# doGet() called");
 		receiveMessages();
-		writeRepsonse(httpServletResponse, "Escuchando mensajitos");
+		writeRepsonse(httpServletResponse, "Listening messages");
 	}
 
 	private void writeRepsonse(HttpServletResponse httpServletResponse, String text) throws IOException {
@@ -56,7 +56,7 @@ public class ReceiveMessageListener extends HttpServlet {
 			
 			// Create a consumer with listener
 			MessageConsumer consumer = queueSession.createConsumer(queue);
-			MessageListener listener = new MyListener();
+			MessageListener listener = new GeoMessagesListener();
 			consumer.setMessageListener(listener);			
 
 			queueConnection.start();			

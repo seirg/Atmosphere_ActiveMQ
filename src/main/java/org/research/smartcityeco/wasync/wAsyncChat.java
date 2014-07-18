@@ -22,7 +22,7 @@ import org.atmosphere.wasync.RequestBuilder;
 import org.atmosphere.wasync.Socket;
 import org.atmosphere.wasync.impl.AtmosphereClient;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.research.smartcityeco.samples.map.atmosphere.Response;
+import org.research.smartcityeco.samples.map.atmosphere.GeoResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,9 +61,9 @@ public class wAsyncChat {
 		/*
 		 * code for Message handler
 		 */
-		socket.on("message", new Function<Response>() {
+		socket.on("message", new Function<GeoResponse>() {
 			@Override
-			public void on(final Response s) {				
+			public void on(final GeoResponse s) {				
                 logger.info(s.getFeatureCollection().toString());
 			};
 		});
