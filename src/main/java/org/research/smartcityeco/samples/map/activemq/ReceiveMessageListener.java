@@ -56,7 +56,7 @@ public class ReceiveMessageListener extends HttpServlet {
 			
 			// Create a consumer with listener
 			MessageConsumer consumer = queueSession.createConsumer(queue);
-			MessageListener listener = new MyListener();
+			MessageListener listener = new GeoMessagesListener();
 			consumer.setMessageListener(listener);			
 
 			queueConnection.start();			

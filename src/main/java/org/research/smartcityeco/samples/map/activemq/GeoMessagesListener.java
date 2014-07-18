@@ -17,9 +17,9 @@ import org.research.smartcityeco.samples.map.atmosphere.RTAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MyListener implements MessageListener {
+public class GeoMessagesListener implements MessageListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(MyListener.class);
+    private static final Logger logger = LoggerFactory.getLogger(GeoMessagesListener.class);
 
     @Override
     public void onMessage(Message message) {
