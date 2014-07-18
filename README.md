@@ -4,21 +4,21 @@ Prueba de concepto que combina un proyecto con {Atmosphere (v2.2.0) y Jersey (v1
 El proyecto lo hemos probado desplegándolo sobre Tomcat (apache-tomcat-7.0.42).
 
 Para realizar una prueba primero debes abrir un navegador y 2 pestañas e introducir la misma URL en ambas:
-http://localhost:8888/atmosphere-activemq-chat/indexMap.html
-Conforme vas haciendo click en la pantalla con el ratón se van generando diferentes "markers" en ambos navegadores (están conectados a través del proyecto Atmosphere-Jersey).
-A continuación vamos a probar la recepción de mensajes a través de ActiveMQ:
+http://localhost:8888/atmosphere-activemq-chat/indexMap.html<br/>
+Conforme vas haciendo click en la pantalla con el ratón se van generando diferentes "markers" en ambos navegadores (están conectados a través del proyecto Atmosphere-Jersey).<br/>
+A continuación vamos a probar la recepción de mensajes a través de ActiveMQ:<br/>
 1º.- Hay que levantar la cola (en la prueba de concepto a través de un servlet): 
-http://localhost:8888/atmosphere-activemq-chat/receiveMessageListener
+http://localhost:8888/atmosphere-activemq-chat/receiveMessageListener<br/>
 2º.- Enviar un mensaje con la posicíon deseada:
 http://localhost:8888/atmosphere-activemq-chat/sendMessage?action=ADD&latitude=37&langitude=-5
 
 **********************************
-Por otro lado también está disponible el ejemplo pero en lugar de con mapas y markers, partiendo del proyecto de un chat que tiene Atmosphere en GitHub.
-Para probar el chat debemos abrir un navegador y 2 pestañas e introducir la misma URL en ambas:
-http://localhost:8888/atmosphere-activemq-chat/indexTopic.html
-Para probar la recepción de mensajes a través de ActiveMQ:
-http://localhost:8888/atmosphere-activemq-chat/receiveMessageListenerChat
-http://localhost:8888/atmosphere-activemq-chat/sendMessageChat
+Por otro lado también está disponible el ejemplo pero en lugar de con mapas y markers, partiendo del proyecto de un chat que tiene Atmosphere en GitHub.<br/>
+Para probar el chat debemos abrir un navegador y 2 pestañas e introducir la misma URL en ambas:<br/>
+http://localhost:8888/atmosphere-activemq-chat/indexTopic.html<br/>
+Para probar la recepción de mensajes a través de ActiveMQ:<br/>
+http://localhost:8888/atmosphere-activemq-chat/receiveMessageListenerChat<br/>
+http://localhost:8888/atmosphere-activemq-chat/sendMessageChat<br/>
 
 **********************************
 Resumen de Pasos:
